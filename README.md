@@ -1,4 +1,4 @@
-# plateShare
+# PlateShare - Recipe Sharing Web Application
 PlateShare is a PHP and MySQL web application that allows users to see and discover recipes. With PlateShare, users can view, search for recipes, and engage with the community by leaving comments on recipes.
 
 # Prerequisites
@@ -11,7 +11,7 @@ Before setting up PlateShare, ensure that you have the following prerequisites i
 # Installation and Setup
 Clone the Repository
 ```
-git clone https://github.com/your-username/PlateShare.git
+git clone https://github.com/saneeitas/PlateShare.git
 ```
 
 # Configure XAMPP
