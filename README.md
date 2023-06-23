@@ -34,9 +34,9 @@ Open a web browser and go to http://localhost/PlateShare/ to access the PlateSha
 # Usage
 Once you have completed the installation and setup, you can start using PlateShare to share and discover recipes. Here are some key features:
 
-Viewing Recipes: Browse through the collection of recipes available on PlateShare. Each recipe displays its title, ingredients, preparation steps, and comments.
-Searching for Recipes: Use the search functionality to find recipes based on keywords or specific ingredients.
-Commenting on Recipes: To leave a comment on a recipe, you need to be logged in. Click on the "Login" button, enter your credentials or create a new account, and then you can comment on any recipe.
+- Viewing Recipes: Browse through the collection of recipes available on PlateShare. Each recipe displays its title, ingredients, preparation steps, and comments.
+- Searching for Recipes: Use the search functionality to find recipes based on keywords or specific ingredients.
+- Commenting on Recipes: To leave a comment on a recipe, you need to be logged in. Click on the "Login" button, enter your credentials or create a new account, and then you can comment on any recipe.
 
 # Contributing
 PlateShare is an open-source project, and contributions are welcome. If you would like to contribute to the development of PlateShare, follow these steps:
