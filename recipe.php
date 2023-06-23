@@ -20,42 +20,48 @@ require "inc/header.php"; ?>
 
     <div class="container p-3">
         <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
+            <div class="col-2">
+                <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3 sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active text-dark" aria-current="page" href="#">
+                                    <span data-feather="home" class="align-text-bottom"></span>
+                                    <?php echo $_SESSION["user"]["name"]; ?> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="recipe.php" style="color:#E57C23;">
+                                    <span data-feather="file" class="align-text-bottom"></span>
+                                    Recipes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="new-recipe.php" style="color:#E57C23;">
+                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                                    New Recipe
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="comments.php" style="color:#E57C23;">
+                                    <span data-feather="users" class="align-text-bottom"></span>
+                                    Comments
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="category.php" style="color:#E57C23;">
+                                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                                    Categories
+                                </a>
+                            </li>
+
+                            </li>
+                        </ul>
                     </div>
-                    <!-- <div class="col-6">
-                      <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-                 </div> -->
-                </div>
             </div>
-            <div class="col-3">
-                <h5>Navigations</h5>
-                <ul>
-                    <li>
-                        <a href="post.php" class="text-danger">Posts</a>
-                    </li>
-                    <li>
-                        <a href="comments.php">Comments</a>
-                    </li>
-                    <li>
-                        <a href="new-post.php">Add New Post</a>
-                    </li>
-                    <li>
-                        <a href="category.php">Categories</a>
-                    </li>
-                    <li>
-                        <a href="users.php">Users</a>
-                    </li>
-                    <li>
-                        <a href="new-user.php">Add New User</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-9">
+            <div class="col-10">
                 <div class="container">
-                    <h6>All Posts</h6>
+                    <h6>All Recipes</h6>
                     <?php
                     if (isset($error)) {
                     ?>
@@ -77,14 +83,16 @@ require "inc/header.php"; ?>
                                 <th scope="col">#</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Ingredient</th>
+                                <th scope="col">Cook Time</th>
+                                <th scope="col">Direction</th>
+                                <th scope="col">Yield</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM posts";
+                            $sql = "SELECT * FROM recipes";
                             $query = mysqli_query($connection, $sql);
                             $counter = 1;
                             while ($result = mysqli_fetch_assoc($query)) {
@@ -92,25 +100,17 @@ require "inc/header.php"; ?>
                                 <tr class="table-active">
                                     <td scope="row"><?php echo $counter; ?></td>
                                     <td scope="row">
-                                        <img height="50" src=<?php echo $result["thumbnail"]; ?> alt="">
+                                        <img height="50" src=<?php echo $result["image"]; ?> alt="">
                                     </td>
                                     <td><?php echo $result["title"]; ?></td>
-                                    <td><?php
-                                        if ($result["status"]) {
-                                        ?>
-                                            Active
-                                        <?php
-                                        } else {
-                                        ?>
-                                            Not Active
-                                        <?php
-                                        }
-                                        ?></td>
-                                    <td><?php echo $result["timestamp"]; ?></td>
+                                    <td><?php echo $result["ingredient"]; ?></td>
+                                    <td><?php echo $result["cook_time"]; ?></td>
+                                    <td><?php echo $result["direction"]; ?></td>
+                                    <td><?php echo $result["yield"]; ?></td>
                                     <td>
-                                        <a href="edit-post.php? edit_post_id=<?php echo $result["id"] ?>">Edit</a>
+                                        <a href="edit-recipe.php? edit_recipe_id=<?php echo $result["id"] ?>">Edit</a>
                                         |
-                                        <a href="?delete_post=<?php echo $result["id"]; ?>">
+                                        <a href="?delete_recipe=<?php echo $result["id"]; ?>">
                                             Delete</a>
                                     </td>
                                 </tr>
