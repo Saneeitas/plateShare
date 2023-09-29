@@ -47,7 +47,7 @@ require "inc/header.php";
         <div class="row">
           <?php
           //displ+aying the recipes from database
-          $sql = "SELECT * FROM recipes ORDER BY id DESC";
+          $sql = "SELECT * FROM recipes  WHERE status = 1 ORDER BY id DESC ";
           $query = mysqli_query($connection, $sql);
           while ($result = mysqli_fetch_assoc($query)) {
             //Looping through the col for multiples recipe

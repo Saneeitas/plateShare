@@ -5,9 +5,7 @@ session_start();
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
 } //check if logged in as user
-if ($_SESSION["user"]["role"] == "user") {
-    header("location: index.php");
-}
+
 
 //header links
 require "inc/header.php"; ?>
@@ -29,31 +27,7 @@ require "inc/header.php"; ?>
                             <li class="nav-item">
                                 <a class="nav-link active text-dark" aria-current="page" href="#">
                                     <span data-feather="home" class="align-text-bottom"></span>
-                                    <?php echo $_SESSION["user"]["name"]; ?> Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="recipe.php" style="color:#E57C23;">
-                                    <span data-feather="file" class="align-text-bottom"></span>
-                                    Recipes
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-danger" href="new-recipe.php" style="color:#E57C23;">
-                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                                    New Recipe
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comments.php" style="color:#E57C23;">
-                                    <span data-feather="users" class="align-text-bottom"></span>
-                                    Comments
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="category.php" style="color:#E57C23;">
-                                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                                    Categories
+                                    Welcome <?php echo $_SESSION["user"]["name"]; ?> 
                                 </a>
                             </li>
 
@@ -63,7 +37,7 @@ require "inc/header.php"; ?>
             </div>
             <div class="col-9">
                 <div class="container">
-                    <h6>Add New Recipes</h6>
+                    <h6 class="text-center">Add New Recipes</h6>
                     <?php
                     if (isset($error)) {
                     ?>
@@ -131,10 +105,10 @@ require "inc/header.php"; ?>
 
                         <div class="form-group">
                             <label for="">Direction</label>
-                            <textarea name="direction" id="" placeholder="Enter recipes direction" cols="30" rows="10" class="form-control" required></textarea>
+                            <textarea name="direction" id="" placeholder="Enter recipes direction" cols="30" rows="5" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="new_recipe" style="background-color:#E57C23;" class="btn btn-sm text-white my-2">
+                            <button type="submit" name="new_recipe" style="background-color:#E57C23;" class="btn btn-mc text-white my-2">
                                 New Recipe</button>
                         </div>
                 </div>

@@ -20,46 +20,7 @@ require "inc/header.php"; ?>
 
     <div class="container p-3">
         <div class="row">
-            <div class="col-2">
-                <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3 sidebar-sticky">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active text-dark" aria-current="page" href="#">
-                                    <span data-feather="home" class="align-text-bottom"></span>
-                                    <?php echo $_SESSION["user"]["name"]; ?> Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-danger" href="recipe.php" style="color:#E57C23;">
-                                    <span data-feather="file" class="align-text-bottom"></span>
-                                    Recipes
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="new-recipe.php" style="color:#E57C23;">
-                                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                                    New Recipe
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comments.php" style="color:#E57C23;">
-                                    <span data-feather="users" class="align-text-bottom"></span>
-                                    Comments
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="category.php" style="color:#E57C23;">
-                                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                                    Categories
-                                </a>
-                            </li>
-
-                            </li>
-                        </ul>
-                    </div>
-            </div>
-            <div class="col-10">
+            <div class="col-12">
                 <div class="container">
                     <h6>All Recipes</h6>
                     <?php
@@ -87,6 +48,7 @@ require "inc/header.php"; ?>
                                 <th scope="col">Cook Time</th>
                                 <th scope="col">Direction</th>
                                 <th scope="col">Yield</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -107,11 +69,32 @@ require "inc/header.php"; ?>
                                     <td><?php echo $result["cook_time"]; ?></td>
                                     <td><?php echo $result["direction"]; ?></td>
                                     <td><?php echo $result["yield"]; ?></td>
+                                    <td><?php
+                                        if ($result["status"]) {
+                                        ?>
+                                            Approved
+                                        <?php
+                                        } else {
+                                        ?>
+                                            Not Approved
+
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
                                     <td>
+                                    <?php
+                                      if (!$result["status"]) {
+                                        ?>
+                                            <a href="?approve_recipe=<?php echo $result["id"] ?>">Approve</a>
+                                            <?php
+                                        } 
+                                     ?>
                                         <a href="edit-recipe.php? edit_recipe_id=<?php echo $result["id"] ?>">Edit</a>
-                                        |
+                                        
                                         <a href="?delete_recipe=<?php echo $result["id"]; ?>">
                                             Delete</a>
+                                           
                                     </td>
                                 </tr>
                             <?php

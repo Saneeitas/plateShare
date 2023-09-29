@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])) {
 }
 //check if logged in as user
 if ($_SESSION["user"]["role"] == "user") {
-    header("location: index.php");
+    header("location: new-recipe.php");
 }
 //header links
 require "inc/header.php"; ?>
@@ -27,33 +27,16 @@ require "inc/header.php"; ?>
                         <li class="nav-item">
                             <a class="nav-link active text-dark" aria-current="page" href="#">
                                 <span data-feather="home" class="align-text-bottom"></span>
-                                <?php echo $_SESSION["user"]["name"]; ?> Dashboard
+                               Welcome <?php echo $_SESSION["user"]["name"]; ?> 
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="recipe.php" style="color:#E57C23;">
                                 <span data-feather="file" class="align-text-bottom"></span>
-                                Recipes
+                                🍽️ Recipes
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="new-recipe.php" style="color:#E57C23;">
-                                <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                                New Recipe
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="comments.php" style="color:#E57C23;">
-                                <span data-feather="users" class="align-text-bottom"></span>
-                                Comments
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="category.php" style="color:#E57C23;">
-                                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                                Categories
-                            </a>
-                        </li>
+                       
 
                         </li>
                     </ul>

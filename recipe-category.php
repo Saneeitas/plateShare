@@ -38,7 +38,7 @@ if (isset($_GET["recipe_category_id"]) && !empty($_GET["recipe_category_id"])) {
             <div class="col-8">
                 <div class="row">
                     <?php
-                    $sql = "SELECT * FROM recipes WHERE category_id ='$id' ORDER BY id DESC";
+                    $sql = "SELECT * FROM recipes WHERE category_id ='$id'  AND status = 1 ORDER BY id DESC";
                     $query = mysqli_query($connection, $sql);
                     while ($result = mysqli_fetch_assoc($query)) {
                         //Looping through the col for multiples recipe

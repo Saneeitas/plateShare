@@ -3,7 +3,6 @@
 require "connection.php";
 
 
-
 if (isset($_POST["register"])) {
 
     $name = $_POST["name"];
@@ -47,7 +46,7 @@ if (isset($_POST["login"])) {
                     $recipe_id = $_SESSION["url"];
                     header("location: read-recipe.php?recipe_id=$recipe_id");
                 } else {
-                    header("location: index.php");
+                    header("location: new-recipe.php");
                 }
             } else {
                 header("location: dashboard.php");
@@ -63,44 +62,6 @@ if (isset($_POST["login"])) {
     }
 }
 
-if (isset($_POST["category"])) {
-    $name = $_POST["name"];
-    //sql
-    $sql = "INSERT INTO category(name) VALUES('$name')";
-    $query = mysqli_query($connection, $sql);
-
-    if ($query) {
-        $success = "Category added";
-    } else {
-        $error = "Unable to add category";
-    }
-}
-
-if (isset($_GET["delete_category"]) && !empty($_GET["delete_category"])) {
-    $id = $_GET["delete_category"];
-    //sql
-    $sql = "DELETE FROM category WHERE id = '$id'";
-    $query = mysqli_query($connection, $sql);
-
-    if ($query) {
-        $success = "Category deleted";
-    } else {
-        $error = "Unable to delete category";
-    }
-}
-
-if (isset($_POST["edit_category"])) {
-    $name = $_POST["name"];
-    $edit_id = $_GET["edit_id"];
-    //sql
-    $sql = "UPDATE category SET name = '$name' WHERE id = '$edit_id'";
-    $query = mysqli_query($connection, $sql);
-    if ($query) {
-        $success = "Category updated";
-    } else {
-        $error = "Unable to update category";
-    }
-}
 
 if (isset($_POST["new_recipe"])) {
     //uploading to upload folder
@@ -221,28 +182,16 @@ if (isset($_POST["comment_new"])) {
     }
 }
 
-if (isset($_GET["approve_comment"]) && !empty($_GET["approve_comment"])) {
-    $comment_id = $_GET["approve_comment"];
+if (isset($_GET["approve_recipe"]) && !empty($_GET["approve_recipe"])) {
+    $recipe_id = $_GET["approve_recipe"];
     //sql query
-    $sql = "UPDATE comments SET status = 1 WHERE id = '$comment_id'";
+    $sql = "UPDATE recipes SET status = 1 WHERE id = '$recipe_id'";
     $query = mysqli_query($connection, $sql);
     //check if
     if ($query) {
-        $success = "Comment approved";
+        $success = "Recipe approved";
     } else {
-        $error = "Unable to approved comment";
+        $error = "Unable to approved Recipe";
     }
 }
 
-if (isset($_GET["delete_comment"]) && !empty($_GET["delete_comment"])) {
-    $comment_id = $_GET["delete_comment"];
-    //sql query
-    $sql = "DELETE FROM comments WHERE id = '$comment_id'";
-    $query = mysqli_query($connection, $sql);
-    //check if
-    if ($query) {
-        $success = "Comment deleted";
-    } else {
-        $error = "Unable to delete comment";
-    }
-}
