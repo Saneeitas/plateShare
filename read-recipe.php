@@ -96,7 +96,7 @@ $_SESSION["url"] = $_GET["recipe_id"];
                 <div>
                     <h5 style="font-weight:bold;">Comments</h5>
                     <?php
-                    $sql = "SELECT * FROM comments WHERE recipe_id='$id' AND status = 1 ";
+                    $sql = "SELECT * FROM comments WHERE recipe_id='$id' ";
                     $query4 = mysqli_query($connection, $sql);
                     $result3 = mysqli_fetch_assoc($query4);
                     if ($result3) {
@@ -131,9 +131,7 @@ $_SESSION["url"] = $_GET["recipe_id"];
                     }
                     ?>
                     <hr>
-                    <?php
-                    if (isset($_SESSION["user"])) {
-                    ?>
+                    
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="">New comment</label>
@@ -144,13 +142,6 @@ $_SESSION["url"] = $_GET["recipe_id"];
                                     Comment</button>
                             </div>
                         </form>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="login.php">Login to comment</a>
-                    <?php
-                    }
-                    ?>
                 </div>
             </div>
 

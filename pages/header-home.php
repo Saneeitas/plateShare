@@ -7,7 +7,7 @@
       <?php
       if (isset($_SESSION["user"])) {
       ?>
-        <a href="dashboard.php" class="nav-link text-dark">Dashboard </a><span></span>
+        <a href="dashboard.php" class="nav-link text-dark">Dashboard 👨‍🍳 </a><span></span>
         <a href="logout.php" class="nav-link text-danger">
           <i class="fas fa-sign-out-alt"></i> Logout</a>
       <?php

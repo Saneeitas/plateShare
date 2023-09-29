@@ -32,7 +32,7 @@ if (isset($_POST["search"])) {
 
                     if (isset($_POST["search"])) {
                         $searchterm = $_POST["search"];
-                        $sql = "SELECT * FROM recipes WHERE title LIKE '%$searchterm%' ORDER BY id DESC";
+                        $sql = "SELECT * FROM recipes WHERE title LIKE '%$searchterm%'  AND status = 1 ORDER BY id DESC";
                         $query = mysqli_query($connection, $sql);
                         while ($result = mysqli_fetch_assoc($query)) {
                             //Looping through the col for multiples recipe
