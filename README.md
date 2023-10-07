@@ -1,2 +1,2 @@
 # plateShare
-A Recipes sharing platform
+A Recipes sharing platform.
