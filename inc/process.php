@@ -175,7 +175,7 @@ if (isset($_POST["comment_new"])) {
         $query = mysqli_query($connection, $sql);
         //check if
         if ($query) {
-            $success = "Comment added, waiting moderation";
+            $success = "Comment added";
         } else {
             $error = "Unable to add comment";
         }
